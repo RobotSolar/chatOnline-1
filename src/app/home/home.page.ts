@@ -29,11 +29,20 @@ export class HomePage implements OnInit {
   }
   ngOnInit() {
     this.chatservice.getChatRooms().subscribe( chats => {
+      console.log(chats)
       this.chatRooms = chats;
+
+      
+
+      // chats.map( lot => {
+      //   // console.log(lot.id)
+      //   this.dataBase.collection('LOTERIAS').doc(lot.id).update({
+      //     lotery_id : 'GkcOUuYerNMdhq3MgpUv'
+      //   })
+      // })
+
     });
-
-
-
+    
   }
 
   openChat(chat) {
@@ -41,7 +50,7 @@ export class HomePage implements OnInit {
     this.modal.create({
       component: ChatComponent,
       componentProps : {
-        name: chat.name
+        lotery: chat
       }
     }).then( (modal) => modal.present());
   }

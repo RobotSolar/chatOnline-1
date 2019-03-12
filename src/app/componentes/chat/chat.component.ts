@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams, ModalController } from '@ionic/angular';
+import { ResultsService } from "../../servicios/results.service";
 
 @Component({
   selector: 'app-chat',
@@ -7,12 +8,19 @@ import { NavParams, ModalController } from '@ionic/angular';
   styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements OnInit {
-  public name: string;
+  public lotery;
+  public results;
 
-  constructor(private navparams: NavParams, private modal: ModalController) { }
+
+  constructor(private navparams: NavParams, private modal: ModalController,
+    private resultsService : ResultsService) { }
 
   ngOnInit() {
-    this.name = this.navparams.get('name');
+    this.lotery = this.navparams.get('lotery');
+
+    this.resultsService.getResultsLotery(this.lotery.id).subscribe( results => {
+      this.results = results
+    })
   }
 
   closeChat() {

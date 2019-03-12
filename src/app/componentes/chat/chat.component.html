@@ -1,6 +1,6 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-title>{{name}}</ion-title>
+        <ion-title>{{lotery.name}}</ion-title>
         <ion-buttons slot="start" fill="clear">
             <ion-button (click)="closeChat()">
                 <ion-icon name="arrow-round-back"></ion-icon>
@@ -10,7 +10,24 @@
 </ion-header>
 
 <ion-content padding>
-    <h3>hola soy el contenido</h3>
+    <h3>Resultados</h3>
+
+    <ion-item *ngFor="let result of results">
+
+        <ion-chip color="success" outline>
+            <span class="results">{{result.firstPrize}}</span>
+        </ion-chip>
+        <ion-chip color="success" outline>
+            <span class="results">{{result.secondPrize}}</span>
+        </ion-chip>
+        <ion-chip color="success" outline>
+            <span class="results">{{result.thirdPrize}}</span>
+        </ion-chip>
+        <ion-badge slot="end" color="primary">{{result.dateLotery.seconds * 1000| date:'dd/MM/yyyy'}}</ion-badge>
+    </ion-item>
+
+    <p *ngIf="results && results < 1"><i>Ningún resultado para esta loteria</i></p>
+
 </ion-content>
 
 <ion-footer padding>

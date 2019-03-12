@@ -28,4 +28,17 @@ export class ResultsService {
       });
     }));
   }
+
+
+  getResultsLotery( id_lotery:string){
+
+    return this.db.collection('LOTERIAS', ref => ref.where('lotery_id', '==', id_lotery)).snapshotChanges().pipe(map(lot => {
+      return lot.map(a => {
+        const data = a.payload.doc.data() as lotery;
+        data.id = a.payload.doc.id;
+        return data;
+      });
+    }));
+  }
+  
 }
