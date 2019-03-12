@@ -16,8 +16,20 @@
         <ion-img [src]="chat.img"></ion-img>
       </ion-avatar>
       <ion-label>
+
         <h2> <b>{{chat.name}}</b> </h2>
-        <p>{{chat.description}}</p>
+        <ion-badge color="primary">{{chat.updated_at.seconds * 1000| date:'dd/MM/yyyy'}}</ion-badge>
+        <br>
+        <ion-chip color="success" outline>
+          <span class="results">{{chat.last_result.first}}</span>
+        </ion-chip>
+        <ion-chip color="success" outline>
+          <span class="results">{{chat.last_result.second}}</span>
+        </ion-chip>
+        <ion-chip color="success" outline>
+          <span class="results">{{chat.last_result.third}}</span>
+        </ion-chip>
+
       </ion-label>
     </ion-item>
   </ion-list>

@@ -20,6 +20,7 @@ export class ResultadosPage implements OnInit {
 
     ngOnInit() {
       this.resultservice.getLotery().subscribe(loteries => {
+        
         this.LOTERIAS = loteries;
       });
 
